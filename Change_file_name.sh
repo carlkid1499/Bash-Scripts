@@ -10,7 +10,6 @@
 # Note to self. Windows ends files with CRLF instead of LF. Make sure to change the in VSC.
 #FILE name variable
 FILE='myfile.txt'
-
 stop=0
 while test $stop -eq 0
 do
@@ -29,8 +28,8 @@ ENDOFMENU
         TEMP=$FILE
         echo "File name entered: $FILE"
         echo
-        FILE=$(sed 's/[_]//g' <<< $FILE)
-        FILE=$(sed 's/[A-Z]/\L&/g' <<< $FILE)
+        FILE=$(sed 's/[_]//g' <<< $FILE) # Find all the "_" and delete them... sed /find//replace/
+        FILE=$(sed 's/[A-Z]/\L&/g' <<< $FILE) # Find all the uppcase letters and replace them with lowercase letters... sed /find//replace/
         echo "Result..."
         echo $FILE
         echo

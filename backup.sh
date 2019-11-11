@@ -10,13 +10,13 @@
 # Note to self. Windows ends files with CRLF instead of LF. Make sure to change the in VSC.
 #Lets grab the time first
 TIME=`date +%H-%M-%S-%b-%d-%y` # %b is month, %d is day, %H is hour, %M is min, %S is sec, %y is year
-FILE=backup-$TIME.tar.gz
-SRCDIR=test
-DISDIR=test
-DESDIR=".backup"
+FILE=backup-$TIME.tar.gz # name of the backupfile that's going to be created
+SRCDIR=test # source directory
+EXTDIR=test # extract directory
+DESDIR=".backup" # destination directory
 mkdir -p $DESDIR # create directory if it doesn't exists with the -p
 stop=0
-while test $stop -eq 0
+while test $stop -eq 0 # check run while stop does not equal 0
 do
  cat <<  ENDOFMENU
  1: Backup directory
@@ -30,7 +30,7 @@ ENDOFMENU
  case $reply in
     "1")
         echo "Please enter the directory to back up: "
-        read SRCDIR
+        read SRCDIR # read in a value from terminal
         echo "Backing up directory: $SRCDIR"
         tar -cvzf $DESDIR/$FILE $SRCDIR
         ;;
@@ -38,8 +38,8 @@ ENDOFMENU
         echo "Directory to extract: "
         read SRCDIR
         echo "Directory to extract files to: "
-        read DISDIR
-        tar -xvzf $SRCDIR -C $DISDIR
+        read EXTDIR
+        tar -xvzf $SRCDIR -C $EXTDIR
         ;;
     "3")
         echo "exiting..."
