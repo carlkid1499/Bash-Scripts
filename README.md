@@ -1,2 +1,2 @@
-# CS-270-Bash-Scripts
- These are some basic scripts
+# CS-270
+Let us write some bash scripts!
